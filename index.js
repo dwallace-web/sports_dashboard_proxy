@@ -1,3 +1,4 @@
+const { application } = require('express');
 const express = require('express');
 const app = express();
 require('dotenv').config();
@@ -60,10 +61,10 @@ app.get('https://lakers-backend.herokuapp.com/teamdetails', async (req, res) => 
     res.json(url_res_data);
 })
 
-app.get('https://lakers-backend.herokuapp.com/active', async (req, res) => {
+// app.get('https://lakers-backend.herokuapp.com/active', async (req, res) => {
 
-    let signal = 'This server is active.'
+//     let signal = 'This server is active.'
 
 
-    res.json([signal]);
-})
+//     res.json([signal]);
+// })
