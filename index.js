@@ -61,10 +61,7 @@ app.get('https://lakers-backend.herokuapp.com/teamdetails', async (req, res) => 
     res.json(url_res_data);
 })
 
-// app.get('https://lakers-backend.herokuapp.com/active', async (req, res) => {
-
-//     let signal = 'This server is active.'
-
-
-//     res.json([signal]);
-// })
+app.get('https://lakers-backend.herokuapp.com/', async (req, res) => {
+    let signal = 'This server is active.'
+    res.json([signal]);
+})
