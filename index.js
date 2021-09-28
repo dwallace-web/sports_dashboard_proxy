@@ -9,7 +9,9 @@ app.use(express.json());
 
 app.use(require('./headers'));
 
-app.listen(process.env.PORT, () => console.log(`This is live on port ${process.env.PORT}`));
+const PORT = process.env.PORT || 5001;
+
+app.listen(PORT, () => console.log(`This is live on port ${PORT}`));
 
 app.get('https://lakers-backend.herokuapp.com/lastevents', async (req, res) => {
     const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/eventslast.php?id=134867`
