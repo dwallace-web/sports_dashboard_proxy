@@ -82,16 +82,6 @@ app.get('/leaguenextevents', async (req, res) => {
     res.json(url_res_data);
 })
 
-// need to pass
-app.get('/leaguenextteamevent', async (req, res) => {
-    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/eventsnextleague.php?id=${{ TEAMID }}`
-
-    const url_res = await fetch(url);
-
-    const url_res_data = await url_res.json();
-
-    res.json(url_res_data);
-})
 
 app.get('/', async (req, res) => {
     let signal = 'This server is active.'
