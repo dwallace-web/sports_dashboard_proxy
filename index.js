@@ -62,7 +62,44 @@ app.get('/teamdetails', async (req, res) => {
     res.json(url_res_data);
 })
 
+app.get('/leaguedetails', async (req, res) => {
+    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/lookup_all_teams.php?id=4387`
+
+    const url_res = await fetch(url);
+
+    const url_res_data = await url_res.json();
+
+    res.json(url_res_data);
+})
+
+app.get('/leaguenextevents', async (req, res) => {
+    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/eventsnextleague.php?id=4387`
+
+    const url_res = await fetch(url);
+
+    const url_res_data = await url_res.json();
+
+    res.json(url_res_data);
+})
+
+// need to pass
+app.get('/leaguenextteamevent', async (req, res) => {
+    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/eventsnextleague.php?id=${{ TEAMID }}`
+
+    const url_res = await fetch(url);
+
+    const url_res_data = await url_res.json();
+
+    res.json(url_res_data);
+})
+
 app.get('/', async (req, res) => {
     let signal = 'This server is active.'
-    res.json([signal]);
+    let endpoints = {
+        '/lastevents': 'last lakers events',
+        '/leaguedetails': 'all nba teams',
+        '/leaguenextevents': 'upcoming nba events does not work',
+
+    }
+    res.json([signal, endpoints]);
 })
