@@ -82,14 +82,46 @@ app.get('/leaguenextevents', async (req, res) => {
     res.json(url_res_data);
 })
 
+// players by team id
+app.get('/lookupplayers/:teamid', async (req, res) => {
+    let teamid = req.params.teamid;
+    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/lookup_all_players.php?id=${teamid}`
+    const url_res = await fetch(url);
+    const url_res_data = await url_res.json();
+    res.json(url_res_data);
+})
+
+
+// equipment by team id
+app.get('/lookupequipment/:teamid', async (req, res) => {
+    let teamid = req.params.teamid;
+    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/lookupequipment.php?id=${teamid}`
+    const url_res = await fetch(url);
+    const url_res_data = await url_res.json();
+    res.json(url_res_data);
+})
+
+// equipment by team id
+app.get('/eventsnext/:teamid', async (req, res) => {
+
+    let teamid = req.params.teamid;
+    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/eventsnext.php?id=${teamid}`
+    const url_res = await fetch(url);
+    const url_res_data = await url_res.json();
+    res.json(url_res_data);
+})
+
+// Last 5 Events  by team id
+app.get('/eventslast/:teamid', async (req, res) => {
+
+    let teamid = req.params.teamid;
+    const url = `https://www.thesportsdb.com/api/v1/json/${process.env.KEY}/eventslast.php?id=${teamid}`
+    const url_res = await fetch(url);
+    const url_res_data = await url_res.json();
+    res.json(url_res_data);
+})
 
 app.get('/', async (req, res) => {
     let signal = 'This server is active.'
-    let endpoints = {
-        '/lastevents': 'last lakers events',
-        '/leaguedetails': 'all nba teams',
-        '/leaguenextevents': 'upcoming nba events does not work',
-
-    }
-    res.json([signal, endpoints]);
+    res.json([signal]);
 })
